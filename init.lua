@@ -2,19 +2,28 @@ _G.hs = hs
 
 -- One-time check at startup: unzip FnMate if not already unzipped
 if not hs.fs.pathToAbsolute(hs.configdir .. "/Spoons/FnMate.spoon") then
-    hs.alert.show("Unzipping FnMate spoon...")
-    local unzipCmd = string.format("unzip -q -o %s/SpoonsRepository/Spoons/FnMate.spoon.zip -d %s/Spoons", hs.configdir, hs.configdir)
-	print("Unzip command: " .. unzipCmd)
-    local output = hs.execute(unzipCmd)
-    if output then
-        hs.alert.show("FnMate spoon unzipped successfully")
+    local zipPath = hs.configdir .. "/SpoonsRepository/Spoons/FnMate.spoon.zip"
+    if hs.fs.pathToAbsolute(zipPath) then
+        hs.alert.show("Unzipping FnMate spoon...")
+        local unzipCmd = string.format("unzip -q -o %s/SpoonsRepository/Spoons/FnMate.spoon.zip -d %s/Spoons", hs.configdir, hs.configdir)
+        print("Unzip command: " .. unzipCmd)
+        local output = hs.execute(unzipCmd)
+        if output then
+            hs.alert.show("FnMate spoon unzipped successfully")
+        else
+            hs.alert.show("Failed to unzip FnMate spoon")
+        end
     else
-        hs.alert.show("Failed to unzip FnMate spoon")
+        print("FnMate spoon zip file not found. Skipping unzipping.")
     end
 end
 
--- Initialize FnMate spoon
-hs.loadSpoon("FnMate")
+-- Initialize FnMate spoon if it exists
+if hs.fs.pathToAbsolute(hs.configdir .. "/Spoons/FnMate.spoon") then
+    hs.loadSpoon("FnMate")
+else
+    print("FnMate spoon not found; skipping hs.loadSpoon.")
+end
 
 -- define hyper key
 local hyper = { "cmd", "alt", "ctrl", "shift" }
