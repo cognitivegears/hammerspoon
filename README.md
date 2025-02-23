@@ -19,6 +19,18 @@ I am sharing it on GitHub in case it is useful to others looking to customize th
    ```
 3. Launch Hammerspoon and reload the configuration using the designated hotkey (default: hyper + r).
 
+## Hammerspoon Spoons Submodule
+
+To initialize the submodule, run:
+```
+git submodule update --init --recursive
+```
+
+To pull updates from the upstream, run:
+```
+git submodule update --remote
+```
+
 ## More Information
 
 - For detailed documentation on Hammerspoon, visit the [official website](https://www.hammerspoon.org/docs/).
