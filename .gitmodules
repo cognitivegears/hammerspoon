@@ -1,4 +1,4 @@
-[submodule "Spoons"]
-	path = SpoonsRepository  # changed from Spoons to SpoonsRepository
+[submodule "SpoonsRepository"]
+	path = SpoonsRepository
 	url = git@github.com:Hammerspoon/Spoons.git
 	branch = master
