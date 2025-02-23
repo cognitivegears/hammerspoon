@@ -1,0 +1,10 @@
+# Ignore Hammerspoon cache and temporary files
+.cache/
+*.log
+
+# OS-specific files
+.DS_Store
+
+# Editor specific files
+*.swp
+*.swo
